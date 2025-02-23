@@ -7,11 +7,15 @@ const TodoItem = ({ todo, onEditTodo, onDeleteTodo }) => {
 
   const [{ isDragging }, drag] = useDrag({
     type: "TODO",
-    item: { id: todo.id },
+    item: () => {
+      return { id: todo.id, status: todo.status };
+    },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   });
+  
+  
 
   const handleSave = () => {
     if (newTitle.trim()) {

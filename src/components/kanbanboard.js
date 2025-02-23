@@ -29,35 +29,69 @@ const KanbanBoard = () => {
   const handleAddTodo = async () => {
     const title = prompt("Enter task title:");
     if (!title) return;
-
-    const newTodo = await addTodo(title);
-    const localId = todos.length ? Math.max(...todos.map(t => t.id)) + 1 : 31;
-
-    setTodos([...todos, { id: localId, todo: newTodo.todo, status: "Pending" }]);
+  
+    // Generate a unique local ID
+    const localId = todos.length ? Math.max(...todos.map((t) => t.id)) + 1 : 31;
+  
+    const newTodo = {
+      id: localId, // Assign a unique local ID
+      todo: title,
+      status: "Pending",
+    };
+  
+    setTodos((prevTodos) => [...prevTodos, newTodo]); 
+    try {
+      const savedTodo = await addTodo(title); 
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === localId ? { ...todo, id: savedTodo.id } : todo
+        )
+      );
+    } catch (error) {
+      console.error("Error syncing todo:", error);
+    }
   };
+  
+  
 
   const handleEditTodo = async (id, newTitle) => {
     if (!id || !newTitle) return;
-
-    let updatedTodo = id <= 30 ? await editTodo(id, newTitle) : { id, todo: newTitle };
-
+  
     setTodos((prevTodos) =>
-      prevTodos.map((todo) => (todo.id === id ? { ...todo, todo: updatedTodo.todo } : todo))
-    );
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, todo: newTitle } : todo
+      )
+    ); 
+  
+    if (id <= 30) { // Only send update for backend-synced tasks
+      try {
+        await editTodo(id, newTitle);
+      } catch (error) {
+        console.error("Error updating todo:", error);
+      }
+    }
   };
+  
 
   const handleMoveTodo = async (id, newStatus) => {
     if (!id || !newStatus) return;
-
-    try {
-      const updatedTodo = await updateTodoStatus(id, newStatus);
-      setTodos((prevTodos) =>
-        prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo))
-      );
-    } catch (error) {
-      console.error("Error moving todo:", error);
+  
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, status: newStatus } : todo
+      )
+    ); 
+  
+    if (id <= 30) { 
+      try {
+        await updateTodoStatus(id, newStatus);
+      } catch (error) {
+        console.error("Error updating status:", error);
+      }
     }
   };
+  
+  
 
   const handleDeleteTodo = async (id) => {
     if (!id) return;
@@ -79,16 +113,16 @@ const KanbanBoard = () => {
         </header>
 
         <div className="kanban-board">
-          {["Pending", "In Progress", "Completed"].map((status) => (
-            <Lane
-              key={status}
-              title={status}
-              todos={todos.filter((todo) => todo.status === status)}
-              onMoveTodo={handleMoveTodo}
-              onEditTodo={handleEditTodo}
-              onDeleteTodo={handleDeleteTodo}
-            />
-          ))}
+        {["Pending", "In Progress", "Completed"].map((status) => (
+  <Lane
+    key={status}
+    title={status}
+    todos={todos.filter((todo) => todo.status === status)} // Ensure correct filtering
+    onMoveTodo={handleMoveTodo}
+    onEditTodo={handleEditTodo}
+    onDeleteTodo={handleDeleteTodo}
+  />
+))}
         </div>
       </div>
     </DndProvider>
