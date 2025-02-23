@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# React Kanban App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 How to Run the Project Locally
 
-## Available Scripts
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/balbir1999/react-kanban-app.git
+```
+Navigate into the project folder:
+```sh
+cd react-kanban-app
+```
 
-In the project directory, you can run:
+### 2️⃣ Install Dependencies
+Ensure you have **Node.js (v16+)** installed, then run:
+```sh
+npm install
+```
 
-### `npm start`
+### 3️⃣ Start the Development Server
+```sh
+npm start
+```
+This will start the app at `http://localhost:3000/`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 💡 Approach Taken
 
-### `npm test`
+### **1️⃣ Component-Based Architecture**
+- Used **React functional components** and **React Hooks** for better state management.
+- Structured components in a modular way to enhance reusability and maintainability.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **2️⃣ State Management**
+- Implemented **React Context API** for managing the Kanban board state globally.
 
-### `npm run build`
+### **3️⃣ Drag and Drop Functionality**
+- Integrated **react-beautiful-dnd** for smooth task movement between different board columns.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔍 Trade-offs & Possible Improvements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ✅ **What Works Well**
+✔ Smooth drag-and-drop interactions.  
+✔ Lightweight and efficient state management.  
+✔ Responsive UI using Material-UI.  
 
-### `npm run eject`
+### ❌ **Potential Improvements**
+- **Persistent Data**: The state resets on page refresh. Adding **local storage or backend API** can improve usability.
+- **User Authentication**: Implement authentication using Firebase or OAuth.
+- **Advanced Filtering & Sorting**: Introduce labels, priorities, and a search feature.
+- **Unit Testing**: Add Jest/React Testing Library tests for better reliability.
+- **Improve UI** : Add material UI and tailwind css for better UI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📜 License
+This project is open-source under the [MIT License](LICENSE).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🙌 Contributing
+Feel free to fork the repo and submit PRs for enhancements! 🎉
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
