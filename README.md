@@ -1,5 +1,7 @@
 # React Kanban App
 
+🚀 **[Live Demo](https://balbir1999.github.io/react-kanban-app/)** (Deployed via GitHub Pages)
+
 ## 🚀 How to Run the Project Locally
 
 ### 1️⃣ Clone the Repository
