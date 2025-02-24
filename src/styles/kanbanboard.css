@@ -1,45 +1,94 @@
-/* Container */
+/* General container styles */
 .kanban-container {
-    font-family: Arial, sans-serif;
-    padding: 10px;
-    background-color: #f8f9fa;
-  }
-  
-  /* Header */
-  .kanban-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  .kanban-header h1 {
-    margin: 0;
-  }
-  
-  /* Add Task Button */
-  .add-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .add-btn:hover {
-    background-color: #218838;
-  }
-  
-  /* Board Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Header styles */
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.kanban-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.add-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Board layout */
+.kanban-board {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Lane styles */
+.lane {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .kanban-board {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .kanban-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .kanban-board {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lane {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .kanban-header h1 {
+    font-size: 20px;
+  }
+
+  .add-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
